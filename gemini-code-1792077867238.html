@@ -1,0 +1,402 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>RG Gabales | Portfolio</title>
+  <style>
+    /* Global Styles & Reset */
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+    }
+
+    body {
+      background-color: #ffffff;
+      color: #333333;
+      line-height: 1.6;
+      padding: 20px;
+    }
+
+    .container {
+      max-width: 1000px;
+      margin: 0 auto;
+      padding: 20px;
+    }
+
+    /* Navigation Bar */
+    header {
+      display: flex;
+      justify-content: flex-end;
+      padding: 15px 0 40px 0;
+    }
+
+    nav ul {
+      display: flex;
+      list-style: none;
+      gap: 25px;
+    }
+
+    nav a {
+      text-decoration: none;
+      color: #888888;
+      font-weight: 600;
+      font-size: 0.95rem;
+      transition: color 0.2s ease;
+    }
+
+    nav a.active, nav a:hover {
+      color: #000000;
+    }
+
+    /* Main Grid Layout */
+    .grid-container {
+      display: grid;
+      grid-template-columns: 1.2fr 0.8fr;
+      gap: 25px;
+      margin-bottom: 40px;
+    }
+
+    /* Cards & Boxes */
+    .card {
+      border: 1px solid #e0e0e0;
+      border-radius: 8px;
+      padding: 25px;
+      background-color: #ffffff;
+    }
+
+    /* Hero Section */
+    .hero-card {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+    }
+
+    .hero-card .subtitle {
+      font-size: 0.75rem;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      color: #888888;
+      margin-bottom: 5px;
+    }
+
+    .hero-card h1 {
+      font-size: 2.2rem;
+      font-weight: 700;
+      color: #222222;
+      margin-bottom: 4px;
+    }
+
+    .hero-card .tagline {
+      font-size: 1.1rem;
+      color: #777777;
+      margin-bottom: 15px;
+    }
+
+    .hero-card p {
+      color: #666666;
+      font-size: 0.95rem;
+    }
+
+    /* Profile Image Container */
+    .profile-container {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .profile-img {
+      width: 100%;
+      max-width: 260px;
+      height: auto;
+      border-radius: 8px;
+      object-fit: cover;
+    }
+
+    /* About Me Section */
+    .about-card h2 {
+      font-size: 1.2rem;
+      font-weight: 600;
+      color: #444444;
+      margin-bottom: 12px;
+    }
+
+    .about-card p {
+      color: #666666;
+      font-size: 0.95rem;
+      margin-bottom: 10px;
+    }
+
+    .about-card p:last-child {
+      margin-bottom: 0;
+    }
+
+    /* Dark Section: Skills & Tools */
+    .skills-card {
+      background-color: #0d1117;
+      color: #ffffff;
+      border-radius: 12px;
+      padding: 20px 25px;
+    }
+
+    .skills-header {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      font-size: 1.1rem;
+      font-weight: 600;
+      margin-bottom: 18px;
+      color: #ffffff;
+    }
+
+    .skills-group {
+      margin-bottom: 18px;
+    }
+
+    .skills-group-title {
+      font-size: 0.8rem;
+      color: #8b949e;
+      margin-bottom: 10px;
+    }
+
+    .badges {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+    }
+
+    .badge {
+      padding: 6px 14px;
+      border-radius: 6px;
+      font-size: 0.75rem;
+      font-weight: 600;
+    }
+
+    .badge-html { background-color: #802e0b; color: #ff8c5a; }
+    .badge-css { background-color: #0b3d68; color: #58a6ff; }
+    .badge-sql { background-color: #1a3c40; color: #39d353; }
+    .badge-java { background-color: #3b1744; color: #d2a8ff; }
+
+    .tool-icon {
+      background-color: #161b22;
+      border: 1px solid #30363d;
+      border-radius: 6px;
+      width: 38px;
+      height: 38px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: #58a6ff;
+      font-weight: bold;
+    }
+
+    /* Section Header */
+    .section-title {
+      font-size: 1.3rem;
+      font-weight: 600;
+      margin: 30px 0 15px 0;
+      color: #222222;
+    }
+
+    /* Projects Section Card */
+    .projects-card {
+      background-color: #0d1117;
+      color: #ffffff;
+      border-radius: 12px;
+      padding: 20px 25px 30px 25px;
+    }
+
+    .projects-header {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      font-size: 0.9rem;
+      color: #8b949e;
+      margin-bottom: 15px;
+    }
+
+    .projects-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+      gap: 20px;
+    }
+
+    .project-item {
+      display: flex;
+      flex-direction: column;
+    }
+
+    .project-preview {
+      width: 100%;
+      height: 140px;
+      background-color: #ffffff;
+      border-radius: 8px;
+      overflow: hidden;
+      margin-bottom: 12px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .project-preview img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    .project-item h3 {
+      font-size: 0.85rem;
+      font-weight: 600;
+      color: #ffffff;
+      margin-bottom: 5px;
+    }
+
+    .project-item p {
+      font-size: 0.75rem;
+      color: #8b949e;
+      margin-bottom: 10px;
+      line-height: 1.4;
+    }
+
+    .btn-figma {
+      display: inline-block;
+      background-color: #1f2937;
+      color: #58a6ff;
+      border: 1px solid #30363d;
+      padding: 4px 10px;
+      border-radius: 4px;
+      font-size: 0.7rem;
+      text-decoration: none;
+      width: fit-content;
+    }
+
+    /* Contact Section */
+    .contact-card {
+      margin-top: 25px;
+    }
+
+    /* Responsive adjustments */
+    @media (max-width: 768px) {
+      .grid-container {
+        grid-template-columns: 1fr;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <div class="container">
+    <!-- Header / Navigation -->
+    <header>
+      <nav>
+        <ul>
+          <li><a href="#home" class="active">Home</a></li>
+          <li><a href="#about">About</a></li>
+          <li><a href="#projects">Projects</a></li>
+          <li><a href="#contact">Contact</a></li>
+        </ul>
+      </nav>
+    </header>
+
+    <main id="home">
+      <!-- Top Row: Hero Text & Profile Photo -->
+      <div class="grid-container">
+        <div class="card hero-card">
+          <span class="subtitle">HI, I'M</span>
+          <h1>RG Gabales</h1>
+          <div class="tagline">Aspiring UI/UX</div>
+          <p>
+            I am currently studying Information Technology at Western Institute of Technology. 
+            I have a strong interest in technology, basic web development, and playing badminton during my free time.
+          </p>
+        </div>
+
+        <div class="profile-container">
+          <!-- Replace src with your photo file -->
+          <img src="your-photo.jpg" alt="RG Gabales" class="profile-img">
+        </div>
+      </div>
+
+      <!-- Middle Row: About Me & Skills -->
+      <div class="grid-container" id="about">
+        <div class="card about-card">
+          <h2>About Me</h2>
+          <p>
+            I'm a college student learning the fundamentals of computer systems and software. 
+            I enjoy creating simple layouts, understanding how websites work behind the scenes, and solving logic problems.
+          </p>
+          <p>
+            My main focus right now is building a practical foundation in programming and improving my web design skills step-by-step.
+          </p>
+        </div>
+
+        <div class="skills-card">
+          <div class="skills-header">
+            <span>&lt;/&gt;</span> Skills &amp; Tools
+          </div>
+
+          <div class="skills-group">
+            <div class="skills-group-title">Languages &amp; Web</div>
+            <div class="badges">
+              <span class="badge badge-html">HTML</span>
+              <span class="badge badge-css">CSS</span>
+              <span class="badge badge-sql">SQL</span>
+              <span class="badge badge-java">Java</span>
+            </div>
+          </div>
+
+          <div class="skills-group">
+            <div class="skills-group-title">Tools &amp; Platforms</div>
+            <div class="badges">
+              <div class="tool-icon">&lt;/&gt;</div>
+              <div class="tool-icon">🐙</div>
+              <div class="tool-icon">👁️</div>
+              <div class="tool-icon">F</div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Projects Section -->
+      <h2 class="section-title" id="projects">Projects</h2>
+      <div class="projects-card">
+        <div class="projects-header">
+          📁 Featured Projects
+        </div>
+
+        <div class="projects-grid">
+          <!-- Project 1 -->
+          <div class="project-item">
+            <div class="project-preview">
+              <img src="attendance-app.png" alt="Attendance Checker App">
+            </div>
+            <h3>Attendance Checker App</h3>
+            <p>A simple homepage style built to showcase the app and attendance login of students/teacher.</p>
+            <a href="#" class="btn-figma">Figma</a>
+          </div>
+
+          <!-- Project 2 -->
+          <div class="project-item">
+            <div class="project-preview">
+              <img src="velox-app.png" alt="Velox App">
+            </div>
+            <h3>Velox App</h3>
+            <p>A simple emergency app design for students and for emergencies in school for fast respond.</p>
+            <a href="#" class="btn-figma">Figma</a>
+          </div>
+        </div>
+      </div>
+
+      <!-- Contact Section -->
+      <h2 class="section-title" id="contact">Contact</h2>
+      <div class="card contact-card">
+        <p>Feel free to reach out via email: <strong>rggabales@example.com</strong></p>
+      </div>
+    </main>
+
+  </div>
+
+</body>
+</html>
